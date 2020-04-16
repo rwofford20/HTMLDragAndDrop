@@ -41,7 +41,7 @@ export default class ToDoDragDropDemo extends Component {
             Done: []
         }
 
-        this.state.tasks.foreach((task) => {
+        this.state.tasks.forEach((task) => {
             tasks[task.type].push(
                 <div key={task.id}
                     onDragStart={(event) => this.onDragStart(event, task.taskName)}
@@ -63,6 +63,12 @@ export default class ToDoDragDropDemo extends Component {
                     <span className="group-header">
                         In Progress
                     </span>
+                </div>
+                <div className="droppable"
+                    onDragOver={(event)=>this.onDragOver(event)}
+                    onDrop={(event)=>this.onDrop(event, "Done")}>
+                <span className="group-header">Done</span> 
+                {tasks.Done}
                 </div>
             </div>
         );
